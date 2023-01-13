@@ -1,0 +1,7 @@
+{
+  "name": "front-test",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

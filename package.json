@@ -1,8 +1,8 @@
 {
   "name": "front-test",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Angel Camacho",
+  "homepage": "https://github.com/angelcamacho34",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -25,6 +25,9 @@
     "@capacitor/keyboard": "4.1.0",
     "@capacitor/status-bar": "4.1.1",
     "@ionic/angular": "^6.1.9",
+    "@ngrx/effects": "^15.1.0",
+    "@ngrx/store": "^15.1.0",
+    "@ngrx/store-devtools": "^15.1.0",
     "ionicons": "^6.0.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

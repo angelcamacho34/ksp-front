@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IRepository } from 'src/modules/core/repository/repository';
+import { toUsersModel } from '../adapters/users.adapters';
 
 import { User, Users } from '../common/users.model';
 
@@ -16,7 +17,9 @@ export class UsersRepository extends IRepository {
     }
 
     getUsers(): Observable<Users> {
-        return this.get<Users>(`${this.baseURL}/getAll`);
+        return this.get<Users>(`${this.baseURL}/getAll`).pipe(map(response => {
+            return toUsersModel(response);
+        }));
     }
 
     upsertUser(user: User): Observable<User> {
@@ -26,7 +29,7 @@ export class UsersRepository extends IRepository {
         return this.post<User>(`${this.baseURL}/create`, this.fetchParams(user));
     }
 
-    deleteUSer(id: string): Observable<any> {
+    deleteUser(id: string): Observable<any> {
         return this.delete<any>(`${this.baseURL}/delete/${id}`);
     }
 }

@@ -1,14 +1,69 @@
+<!-- HEADER -->
 <ion-header>
   <ion-toolbar>
-
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-
     <ion-title>Lista de usuarios</ion-title>
+    <!-- UPDATE BTN -->
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="refresh()" fill="outline" shape="round">
+        Actualizar
+        <ion-icon name="refresh-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- END UPDATE BTN -->
   </ion-toolbar>
 </ion-header>
+<!-- END HEADER -->
 
 <ion-content>
+  <!-- NO RESULT -->
+  <div class="no-result" *ngIf="!users.length; else listSec">
+    <ion-icon color="tertiary" name="list" class="no-result-icon"></ion-icon>
+    <ion-label class="no-result-label">Ups! No hay resultados</ion-label>
+  </div>
+  <!-- END NO RESULT -->
 
+  <!-- USERS LIST -->
+  <ng-template #listSec>
+    <ion-list>
+      <ion-item>
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="1">ID</ion-col>
+            <ion-col size="3">Nombre Completo</ion-col>
+            <ion-col size="2">Puesto</ion-col>
+            <ion-col size="2">Salario</ion-col>
+            <ion-col size="2">Fecha de ingreso</ion-col>
+            <ion-col size="2">Beneficiario</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item *ngFor="let user of users">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="1" class="bold flex-start-center">
+              <div class="mr-4 bullet"
+                [ngClass]="{'active': user.status === 'active', 'inactive':user.status!=='active'}"></div>
+              {{user.id?.slice(-5)}}
+            </ion-col>
+            <ion-col size="3" class="bold">{{user.fullName | titlecase}}</ion-col>
+            <ion-col size="2">{{user.jobPosition}}</ion-col>
+            <ion-col size="2">{{user.salary}}</ion-col>
+            <ion-col size="2">{{user.hireDate}}</ion-col>
+            <ion-col size="2">{{user.beneficiary ? 'Si': 'No'}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+  <!-- USERS LIST -->
+  <!-- FAB BUTTON TO CREATE -->
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button [routerLink]="'/create-user'" routerDirection="root">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <!-- FAB BUTTON TO CREATE -->
 </ion-content>

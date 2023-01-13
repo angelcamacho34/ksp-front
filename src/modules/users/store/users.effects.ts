@@ -60,7 +60,7 @@ export class UsersEffects {
         this.actions$.pipe(
             ofType(actions.deleteUser),
             exhaustMap((request: any) => {
-                return this.repository.deleteUSer(request.id).pipe(
+                return this.repository.deleteUser(request.id).pipe(
                     map((response) => {
                         return actions.deleteUserSuccess({
                             id: request.id,

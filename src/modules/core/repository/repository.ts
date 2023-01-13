@@ -1,9 +1,4 @@
-import {
-    HttpClient,
-    HttpErrorResponse,
-    HttpHeaders,
-    HttpParams,
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 export abstract class IRepository {

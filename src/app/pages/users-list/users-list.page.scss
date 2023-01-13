@@ -1,0 +1,32 @@
+$space: 24px;
+$bullet: 16px;
+.bold {
+  font-weight: 600;
+}
+.no-result {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  opacity: 0.8;
+  &-icon {
+    font-size: 98px;
+  }
+  &-label {
+    margin-top: $space;
+    font-size: $space;
+  }
+}
+.bullet {
+  width: $bullet;
+  height: $bullet;
+  border-radius: 50%;
+  &.active {
+    background-color: green;
+  }
+  &.inactive {
+    background-color: var(--ion-color-danger);
+  }
+}
